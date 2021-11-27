@@ -23,8 +23,9 @@ class HomeAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Testing Global Theme with Provider',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
       body: const HomeAppBody(),

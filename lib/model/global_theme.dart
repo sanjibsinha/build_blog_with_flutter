@@ -21,7 +21,8 @@ class GlobalTheme with ChangeNotifier {
         height: 1.2,
       ),
       headline1: TextStyle(
-        color: Colors.deepOrange,
+        color: Colors.deepPurple,
+        fontFamily: 'Allison',
         fontWeight: FontWeight.bold,
         fontSize: 60,
       ),
@@ -42,6 +43,7 @@ class GlobalTheme with ChangeNotifier {
       titleTextStyle: TextStyle(
         color: Colors.deepPurple,
         fontWeight: FontWeight.bold,
+        fontFamily: 'Allison',
         fontSize: 40,
       ),
     ),
