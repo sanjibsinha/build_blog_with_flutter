@@ -3,7 +3,14 @@ import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
   final ThemeData homeTheme;
-  const HomePage({Key? key, required this.homeTheme}) : super(key: key);
+  final int homeInt;
+  final String homeString;
+  const HomePage({
+    Key? key,
+    required this.homeTheme,
+    required this.homeInt,
+    required this.homeString,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +23,24 @@ class HomePage extends StatelessWidget {
       ),
       body: HomeBody(
         homeTheme: homeTheme,
+        homeInt: homeInt,
+        homeString: homeString,
       ),
     );
   }
 }
 
-/// pushing to main now
+/// pushing to branch how provider works
 class HomeBody extends StatelessWidget {
   final ThemeData homeTheme;
-  const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
+  final int homeInt;
+  final String homeString;
+  const HomeBody({
+    Key? key,
+    required this.homeTheme,
+    required this.homeInt,
+    required this.homeString,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +53,26 @@ class HomeBody extends StatelessWidget {
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
+              'Provided integer: $homeInt',
+              style: homeTheme.textTheme.bodyText2,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'Provided String: $homeString',
+              style: homeTheme.textTheme.bodyText1,
+            ),
+          ),
+          /* Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
               'Headline 2 theme style provided by provider',
               style: homeTheme.textTheme.headline2,
             ),
-          ),
+          ), */
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
@@ -49,14 +81,14 @@ class HomeBody extends StatelessWidget {
               style: homeTheme.textTheme.headline1,
             ),
           ),
-          Container(
+          /* Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
               'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
               style: homeTheme.textTheme.bodyText2,
             ),
-          ),
+          ), */
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
