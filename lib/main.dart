@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'model/global_theme.dart';
 import 'view/home.dart';
 
 void main() {
-  runApp(const HomeApp());
+  runApp(
+    /// Providers are above [Root App] instead of inside it, so that tests
+    /// can use [Root App] while mocking the providers
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => GlobalTheme()),
+      ],
+      child: const HomeApp(),
+    ),
+  );
 }
