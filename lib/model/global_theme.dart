@@ -6,28 +6,24 @@ class GlobalTheme with ChangeNotifier {
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontSize: 22,
-        height: 1.2,
       ),
       bodyText2: TextStyle(
         color: Colors.blue,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: FontWeight.bold,
-        height: 1.0,
       ),
       caption: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
-        height: 1.2,
       ),
       headline1: TextStyle(
         color: Colors.deepPurple,
+        fontSize: 50,
         fontFamily: 'Allison',
-        fontWeight: FontWeight.bold,
-        fontSize: 60,
       ),
       headline2: TextStyle(
-        color: Colors.black38,
+        color: Colors.deepOrange,
         fontSize: 30,
         fontWeight: FontWeight.bold,
       ),

@@ -11,7 +11,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
       ],
-      child: const HomeApp(),
+      child: const Home(),
     ),
   );
 }
