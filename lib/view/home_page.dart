@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+/// getting new brnches
+
 class HomePage extends StatelessWidget {
   final ThemeData homeTheme;
   const HomePage({Key? key, required this.homeTheme}) : super(key: key);
@@ -21,7 +23,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/// pushing to main now
+/// pushing to the new branch again
 class HomeBody extends StatelessWidget {
   final ThemeData homeTheme;
   const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
