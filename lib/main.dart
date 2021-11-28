@@ -10,6 +10,8 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
+        Provider<int>(create: (context) => 1),
+        Provider<String>(create: (context) => 'Hello Flutter'),
       ],
       child: const Home(),
     ),

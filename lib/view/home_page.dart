@@ -1,9 +1,10 @@
+import 'package:build_blog_with_flutter/model/global_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomePage({Key? key, required this.homeTheme}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,25 +12,23 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Testing Global Theme with Provider',
-          style: homeTheme.appBarTheme.titleTextStyle,
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: HomeBody(
-        homeTheme: homeTheme,
-      ),
+      body: const HomeBody(),
     );
   }
 }
 
 /// pushing to main now
 class HomeBody extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
+  const HomeBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    String stringDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+    final int globalInt = Provider.of<int>(context);
+    final String globalString = Provider.of<String>(context);
+    final ThemeData globalTheme = Provider.of<GlobalTheme>(context).globalTheme;
     return Center(
       child: Column(
         children: [
@@ -37,40 +36,27 @@ class HomeBody extends StatelessWidget {
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Headline 2 theme style provided by provider',
-              style: homeTheme.textTheme.headline2,
+              '$globalInt',
+              //style: Theme.of(context).textTheme.bodyText1,
+              style: globalTheme.textTheme.bodyText1,
             ),
           ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Headline 1 theme style provided by provider',
-              style: homeTheme.textTheme.headline1,
+              globalString,
+              //style: Theme.of(context).textTheme.bodyText2,
+              style: globalTheme.textTheme.bodyText2,
             ),
           ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
-              style: homeTheme.textTheme.bodyText2,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 1: Here goes some more information regarding your works. Theme by provider.',
-              style: homeTheme.textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Datetime theme style provided by provider: $stringDate',
-              style: homeTheme.textTheme.caption,
+              'Headline 1 theme style again provided by provider',
+              //style: Theme.of(context).textTheme.headline2,
+              style: globalTheme.textTheme.headline1,
             ),
           ),
         ],
