@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/// pushing to branch how provider works
+/// pushing to branch how provider works again
 class HomeBody extends StatelessWidget {
   final ThemeData homeTheme;
   final int homeInt;
@@ -65,14 +65,6 @@ class HomeBody extends StatelessWidget {
               style: homeTheme.textTheme.bodyText1,
             ),
           ),
-          /* Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Headline 2 theme style provided by provider',
-              style: homeTheme.textTheme.headline2,
-            ),
-          ), */
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
@@ -81,14 +73,6 @@ class HomeBody extends StatelessWidget {
               style: homeTheme.textTheme.headline1,
             ),
           ),
-          /* Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
-              style: homeTheme.textTheme.bodyText2,
-            ),
-          ), */
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
