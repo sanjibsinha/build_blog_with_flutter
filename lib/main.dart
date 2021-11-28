@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
 import 'view/home.dart';
 
-/// creating a new branch 1-how-provider-works
+/// created a new branch 1-how-provider-works
 
 void main() {
   runApp(
