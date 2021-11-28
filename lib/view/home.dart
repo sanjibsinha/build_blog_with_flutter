@@ -9,11 +9,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData globalTheme = Provider.of<GlobalTheme>(context).globalTheme;
+    final int providedIntegerValue = Provider.of<int>(context);
+    final String providedStringValue = Provider.of<String>(context);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: globalTheme,
       home: HomePage(
         homeTheme: globalTheme,
+        homeInt: providedIntegerValue,
+        homeString: providedStringValue,
       ),
     );
   }
