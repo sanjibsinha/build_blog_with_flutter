@@ -175,8 +175,8 @@ class BlogDetail extends StatelessWidget {
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(5),
               child: Text(
-                date.toString(),
-                style: blogTheme.textTheme.bodyText1,
+                DateFormat('d MMMM y').format(date),
+                style: blogTheme.textTheme.bodyText2,
               ),
             ),
           ],

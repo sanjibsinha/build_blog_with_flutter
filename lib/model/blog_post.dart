@@ -1,12 +1,8 @@
-import 'package:intl/intl.dart';
-
 class BlogPost {
   final String id;
   final String title;
   final DateTime date;
   final String content;
-
-  String get now => DateFormat('d MMMM y').format(date);
 
   BlogPost({
     required this.id,
