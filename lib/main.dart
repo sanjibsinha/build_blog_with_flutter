@@ -11,7 +11,9 @@ void main() {
     /// can use [Root App] while mocking the providers
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => GlobalTheme()),
+        Provider<GlobalTheme>(
+          create: (context) => GlobalTheme(),
+        ),
       ],
       child: const Home(),
     ),
