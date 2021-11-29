@@ -4,6 +4,7 @@ import 'model/global_theme.dart';
 import 'view/home.dart';
 
 /// created a new branch 1-how-provider-works
+/// created new branch 2-blog-page-with-provider
 
 void main() {
   runApp(
