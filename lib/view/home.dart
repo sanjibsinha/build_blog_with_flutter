@@ -10,11 +10,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData globalTheme = Provider.of<GlobalTheme>(context).globalTheme;
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Building Blog',
       theme: globalTheme,
-      home: HomePage(
-        homeTheme: globalTheme,
-      ),
+      home: const HomePage(),
     );
   }
 }

@@ -1,16 +1,19 @@
+import 'package:build_blog_with_flutter/model/blog_post.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import '/model/global_theme.dart';
 
 class HomePage extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomePage({Key? key, required this.homeTheme}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final homeTheme = Provider.of<GlobalTheme>(context).globalTheme;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Testing Global Theme with Provider',
+          'Blog Home Page',
           style: homeTheme.appBarTheme.titleTextStyle,
         ),
       ),
@@ -21,31 +24,21 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/// pushing to main now
 class HomeBody extends StatelessWidget {
   final ThemeData homeTheme;
   const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    String stringDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+    final blogPosts = Provider.of<List<BlogPost>>(context);
     return Center(
-      child: Column(
+      child: ListView(
         children: [
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Headline 2 theme style provided by provider',
-              style: homeTheme.textTheme.headline2,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Headline 1 theme style provided by provider',
+              'Blog by Clumsy Coder',
               style: homeTheme.textTheme.headline1,
             ),
           ),
@@ -53,24 +46,9 @@ class HomeBody extends StatelessWidget {
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
-              style: homeTheme.textTheme.bodyText2,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 1: Here goes some more information regarding your works. Theme by provider.',
-              style: homeTheme.textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Datetime theme style provided by provider: $stringDate',
-              style: homeTheme.textTheme.caption,
+              'I am a clumsy coder who neither can write decent code, nor '
+              'can write fiction. But I try to be a good human being.',
+              style: homeTheme.textTheme.headline2,
             ),
           ),
         ],
