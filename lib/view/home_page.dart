@@ -21,7 +21,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/// pushing to main now
+/// creating a new branch
+/// building a blog page
 class HomeBody extends StatelessWidget {
   final ThemeData homeTheme;
   const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
