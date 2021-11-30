@@ -12,9 +12,7 @@ class Home extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: globalTheme,
-      home: HomePage(
-        homeTheme: globalTheme,
-      ),
+      home: const HomePage(),
     );
   }
 }
