@@ -1,79 +1,138 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import '/model/blog_post.dart';
 
 class HomePage extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomePage({Key? key, required this.homeTheme}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Testing Global Theme with Provider',
-          style: homeTheme.appBarTheme.titleTextStyle,
+          'Blog Home Page',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: HomeBody(
-        homeTheme: homeTheme,
-      ),
+      body: const HomeBody(),
     );
   }
 }
 
-/// pushing to main now
 class HomeBody extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
+  const HomeBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    String stringDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+    final posts = Provider.of<List<BlogPost>>(context);
     return Center(
-      child: Column(
+      child: ListView(
         children: [
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Headline 2 theme style provided by provider',
-              style: homeTheme.textTheme.headline2,
+              'Blog by Clumsy Coder',
+              style: Theme.of(context).textTheme.headline2,
             ),
           ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: Text(
-              'Headline 1 theme style provided by provider',
-              style: homeTheme.textTheme.headline1,
+              'I am a clumsy coder trying to write decent code, and '
+              'fiction.'
+              ' But there is a friction. '
+              'So, I avoid proper diction.',
+              style: Theme.of(context).textTheme.headline1,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
-              style: homeTheme.textTheme.bodyText2,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 1: Here goes some more information regarding your works. Theme by provider.',
-              style: homeTheme.textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Datetime theme style provided by provider: $stringDate',
-              style: homeTheme.textTheme.caption,
-            ),
-          ),
+          for (var post in posts) BlogPostHome(post: post),
         ],
+      ),
+    );
+  }
+}
+
+class BlogPostHome extends StatelessWidget {
+  final BlogPost post;
+  const BlogPostHome({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BlogDetail(post: post),
+            ),
+          );
+        },
+        child: Text(
+          post.title,
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ]);
+  }
+}
+
+class BlogDetail extends StatelessWidget {
+  final BlogPost post;
+  const BlogDetail({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Blog Page',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        ),
+      ),
+      body: Center(
+        child: ListView(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                post.title,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline1,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                post.content,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                DateFormat('d MMMM y').format(post.date),
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

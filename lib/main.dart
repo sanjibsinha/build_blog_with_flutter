@@ -1,3 +1,4 @@
+import 'package:build_blog_with_flutter/model/blog_post.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
@@ -10,6 +11,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
+        Provider<List<BlogPost>>(create: (context) => blogPosts),
       ],
       child: const Home(),
     ),
