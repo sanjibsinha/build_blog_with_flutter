@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
 import 'view/home.dart';
 
-/// created two branches on blog
+/// created branches on blog
+/// two branches on blog
 
 void main() {
   runApp(
