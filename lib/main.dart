@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
 import 'view/home.dart';
 
+/// created two branches on blog
+
 void main() {
   runApp(
     /// Providers are above [Root App] instead of inside it, so that tests
