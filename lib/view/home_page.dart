@@ -1,80 +1,98 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import '/model/blog_post.dart';
 
 class HomePage extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomePage({Key? key, required this.homeTheme}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Testing Global Theme with Provider',
-          style: homeTheme.appBarTheme.titleTextStyle,
+          'Blog Home Page',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: HomeBody(
-        homeTheme: homeTheme,
+      body: const HomeBody(),
+    );
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  const HomeBody({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final blogs = Provider.of<List<BlogPost>>(context);
+    return InkWell(
+      onTap: () {},
+      child: GridView.builder(
+        padding: const EdgeInsets.all(10.0),
+        itemCount: blogs.length,
+        itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+          value: blogs[i],
+          child: Text(blogs[i].title),
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          childAspectRatio: 20 / 2,
+          crossAxisSpacing: 2,
+          mainAxisSpacing: 2,
+        ),
       ),
     );
   }
 }
 
-/// creating a new branch
-/// building a blog page
-class HomeBody extends StatelessWidget {
-  final ThemeData homeTheme;
-  const HomeBody({Key? key, required this.homeTheme}) : super(key: key);
+class BlogDetail extends StatelessWidget {
+  final BlogPost post;
+  const BlogDetail({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    String stringDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
-    return Center(
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Headline 2 theme style provided by provider',
-              style: homeTheme.textTheme.headline2,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Blog Page',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        ),
+      ),
+      body: Center(
+        child: ListView(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                post.title,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline1,
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Headline 1 theme style provided by provider',
-              style: homeTheme.textTheme.headline1,
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                post.content,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 2: Here goes some introduction about yourself. Theme by provider.',
-              style: homeTheme.textTheme.bodyText2,
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                DateFormat('d MMMM y').format(post.date),
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Body Text 1: Here goes some more information regarding your works. Theme by provider.',
-              style: homeTheme.textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'Datetime theme style provided by provider: $stringDate',
-              style: homeTheme.textTheme.caption,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
