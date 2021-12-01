@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
+
 import 'view/home.dart';
+
+/// created a new branch 1-how-provider-works
+/// created new branch 2-blog-page-with-provider
+/// /// created new branch 3-blog-page-with-provider
+/// /// created new branch 4-blog-page-with-provider
+/// however, it's not working
 
 void main() {
   runApp(
@@ -10,8 +17,6 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
-        Provider<int>(create: (context) => 1),
-        Provider<String>(create: (context) => 'Hello Flutter'),
       ],
       child: const Home(),
     ),
