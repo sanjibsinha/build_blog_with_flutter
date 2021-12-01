@@ -1,4 +1,6 @@
-class BlogPost {
+import 'package:flutter/material.dart';
+
+class BlogPost with ChangeNotifier {
   final String id;
   final String title;
   final DateTime date;
