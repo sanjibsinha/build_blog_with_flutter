@@ -26,21 +26,57 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final blogs = Provider.of<List<BlogPost>>(context);
-    return InkWell(
-      onTap: () {},
-      child: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: blogs.length,
-        itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-          value: blogs[i],
-          child: Text(blogs[i].title),
-        ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 20 / 2,
-          crossAxisSpacing: 2,
-          mainAxisSpacing: 2,
-        ),
+    return Center(
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'Blog by Clumsy Coder',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'I am a clumsy coder trying to write decent code, and '
+              'fiction.'
+              ' But there is a friction. '
+              'So, I avoid proper diction.',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+          ),
+          Flexible(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(10.0),
+              itemCount: blogs.length,
+              itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+                value: blogs[i],
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BlogDetail(
+                          post: blogs[i],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(blogs[i].title),
+                ),
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                childAspectRatio: 20 / 2,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
