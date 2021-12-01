@@ -19,13 +19,13 @@ class GlobalTheme with ChangeNotifier {
       ),
       headline1: TextStyle(
         color: Colors.deepPurple,
-        fontSize: 50,
+        fontSize: 70,
+        fontWeight: FontWeight.bold,
         fontFamily: 'Allison',
       ),
       headline2: TextStyle(
         color: Colors.deepOrange,
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
+        fontSize: 25,
       ),
     ),
     appBarTheme: const AppBarTheme(
@@ -39,8 +39,7 @@ class GlobalTheme with ChangeNotifier {
       titleTextStyle: TextStyle(
         color: Colors.deepPurple,
         fontWeight: FontWeight.bold,
-        fontFamily: 'Allison',
-        fontSize: 40,
+        fontSize: 30,
       ),
     ),
   );

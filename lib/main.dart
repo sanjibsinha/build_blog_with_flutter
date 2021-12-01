@@ -20,7 +20,11 @@ void main() {
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
         Provider<List<BlogPost>>(
           create: (context) => blogPosts,
+<<<<<<< HEAD
         )
+=======
+        ),
+>>>>>>> 2-blog-page-with-provider
       ],
       child: const Home(),
     ),
