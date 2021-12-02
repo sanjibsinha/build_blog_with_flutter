@@ -10,6 +10,7 @@ import 'view/home.dart';
 /// /// created new branch 4-blog-page-with-provider
 /// however, it's not working at first
 /// Now, it's working with Flexible widget
+/// adding a  simple future provider
 ///
 void main() {
   runApp(
