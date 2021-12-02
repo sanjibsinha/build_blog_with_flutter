@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import 'package:flutter/foundation.dart';
-=======
 import 'package:flutter/material.dart';
->>>>>>> e08d67ac36303a12b51d91d61d55f481fefd5339
 
 class BlogPost with ChangeNotifier {
   final String id;
