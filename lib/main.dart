@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'model/global_theme.dart';
+import '/model/blog_post.dart';
 import 'view/home.dart';
 
-/// created branches on blog
-/// two branches on blog
+/// FutureProvider simple sample
 
 void main() {
   runApp(
@@ -13,6 +13,11 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalTheme()),
+        FutureProvider<List<BlogPost>>(
+          create: (context) => Future.value(blogPosts),
+          initialData: blogPosts,
+          child: const Home(),
+        )
       ],
       child: const Home(),
     ),
